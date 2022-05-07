@@ -17,9 +17,24 @@ class Myapp extends StatelessWidget {
     return MaterialApp(
       title: "Personal Expanses App",
       theme: ThemeData(
-          primarySwatch: Colors.pink,
-          accentColor: Colors.redAccent,
-          fontFamily: 'Quicksand'),
+        primarySwatch: Colors.pink,
+        accentColor: Colors.redAccent,
+        fontFamily: 'Quicksand',
+        textTheme: ThemeData.light().textTheme.copyWith(
+              headline6: TextStyle(
+                  fontFamily: 'Quicksand',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20),
+            ),
+        appBarTheme: AppBarTheme(
+          textTheme: ThemeData.light().textTheme.copyWith(
+                headline6: TextStyle(
+                    fontFamily: 'Quicksand',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
+        ),
+      ),
       home: Myhomepage(),
     );
   }
@@ -32,18 +47,18 @@ class Myhomepage extends StatefulWidget {
 
 class _MyhomepageState extends State<Myhomepage> {
   final List<Transactions> usertrx = [
-    Transactions(
-      id: 't1',
-      title: 'New Shoes',
-      amount: 69.99,
-      date: DateTime.now(),
-    ),
-    Transactions(
-      id: 't2',
-      title: 'Groceries',
-      amount: 13.53,
-      date: DateTime.now(),
-    ),
+    // Transactions(
+    //   id: 't1',
+    //   title: 'New Shoes',
+    //   amount: 69.99,
+    //   date: DateTime.now(),
+    // ),
+    // Transactions(
+    //   id: 't2',
+    //   title: 'Groceries',
+    //   amount: 13.53,
+    //   date: DateTime.now(),
+    // ),
   ];
 
   void addnewtransactions(String txtitle, double txamount) {
