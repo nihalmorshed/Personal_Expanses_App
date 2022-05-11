@@ -1,6 +1,7 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:personal_expanses/chart.dart';
 import 'package:personal_expanses/new_transaction.dart';
 import 'package:personal_expanses/transaction_list.dart';
 import 'package:personal_expanses/transactions.dart';
@@ -61,6 +62,16 @@ class _MyhomepageState extends State<Myhomepage> {
     // ),
   ];
 
+  List<Transactions> get _recentTransactions {
+    return usertrx.where((tx) {
+      return tx.date.isAfter(
+        DateTime.now().subtract(
+          Duration(days: 7),
+        ),
+      );
+    }).toList();
+  }
+
   void addnewtransactions(String txtitle, double txamount) {
     final newtx = Transactions(
       id: DateTime.now().toString(),
@@ -102,19 +113,7 @@ class _MyhomepageState extends State<Myhomepage> {
           // mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              width: double.infinity,
-              child: Card(
-                color: Colors.teal,
-                child: Text(
-                  "Chart!",
-                  style: TextStyle(
-                    fontSize: 25,
-                  ),
-                ),
-                elevation: 5,
-              ),
-            ),
+            chart(_recentTransactions),
             TransactionList(usertrx),
           ],
         ),
