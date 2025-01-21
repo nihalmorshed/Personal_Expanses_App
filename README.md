@@ -35,7 +35,7 @@ lib/
 
 1. Clone the repository
 ```bash
-git clone [your-repository-link]
+git clone https://github.com/nihalmorshed/Personal_Expanses_App.git
 ```
 
 2. Navigate to project directory
